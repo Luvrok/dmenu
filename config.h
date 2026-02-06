@@ -10,15 +10,30 @@ static char *fonts[] = {
 	"JetBrainsMonoNL Nerd Font:size=12"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+
+/* default colors used if xrdb is not loaded */
+static char normbgcolor[]           = "#282828";
+static char normfgcolor[]           = "#ebdbb2";
+
+static char selfgcolor[]            = "#d65d0e";
+static char selbordercolor[]        = "#d65d0e";
+static char selbgcolor[]            = "#d65d0e";
+
+static char hlfgcolor[]       = "#fabd2f";
+static char hlbgcolor[]       = "#d65d0e";
+
+static char outfgcolor[]      = "#d65d0e";
+static char outbgcolor[]      = "#d65d0e";
+
 static char *colors[SchemeLast][2] = {
-	/*     fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#222222" },
-	[SchemeSel] = { "#eeeeee", "#005577" },
-	[SchemeSelHighlight] = { "#ffc978", "#005577" },
-	[SchemeNormHighlight] = { "#ffc978", "#222222" },
-	[SchemeOut] = { "#000000", "#00ffff" },
-	[SchemeOutHighlight] = { "#ffc978", "#00ffff" },
-	[SchemeBorder] = { "#d65d0e", NULL },
+	/* fg            bg */
+	[SchemeNorm]          = { normfgcolor, normbgcolor },
+	[SchemeSel]           = { selfgcolor,  selbgcolor },
+	[SchemeNormHighlight] = { hlfgcolor,    normbgcolor },
+	[SchemeSelHighlight]  = { hlfgcolor,    hlbgcolor },
+	[SchemeOut]           = { outfgcolor,   outbgcolor },
+	[SchemeOutHighlight]  = { hlfgcolor,    outbgcolor },
+	[SchemeBorder]        = { selbordercolor, NULL },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 0;

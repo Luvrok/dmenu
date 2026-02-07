@@ -1,4 +1,5 @@
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
+static const unsigned int alpha = 0xF2;     /* Amount of opacity. 0xff is opaque (0xE6 - 90%, 0xF2 - 95%)             */
 static int horizpadbar = -16;                 /* horizontal padding */
 static int vertpadbar = 1;                  /* vertical padding */
 static int draw_input = 1;                  /* -noi option; if 0, the input will not be drawn by default */
@@ -34,6 +35,12 @@ static char *colors[SchemeLast][2] = {
 	[SchemeOut]           = { outfgcolor,   outbgcolor },
 	[SchemeOutHighlight]  = { hlfgcolor,    outbgcolor },
 	[SchemeBorder]        = { selbordercolor, NULL },
+};
+
+static const unsigned int alphas[SchemeLast][2] = {
+	[SchemeNorm] = { OPAQUE, alpha },
+	[SchemeSel] = { OPAQUE, alpha },
+	[SchemeOut] = { OPAQUE, alpha },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 0;

@@ -1,4 +1,6 @@
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
+static int horizpadbar = -16;                 /* horizontal padding */
+static int vertpadbar = 1;                  /* vertical padding */
 static int draw_input = 1;                  /* -noi option; if 0, the input will not be drawn by default */
 static int centered = 1;                    /* -c option; centers dmenu on screen */
 static int min_width = 500;                    /* minimum width when centered */

@@ -9,6 +9,7 @@ inspired by [bread's build](https://github.com/BreadOnPenguins/dmenu)
 * [no input (dmenu-noinputlinesbelowpromptfullwidth-5.2.diff)](https://tools.suckless.org/dmenu/patches/no-input/)
 * [managed (dmenu-managed-4.9.diff)](https://tools.suckless.org/dmenu/patches/managed/)
 * [case-insensitive (dmenu-caseinsensitive-5.0.diff)](https://tools.suckless.org/dmenu/patches/case-insensitive/)
+* [dmenupadding (dmenu-dmenupadding-20250627-b1e217b.diff)](https://tools.suckless.org/dmenu/patches/dmenupadding/)
 
 ## Patches to apply in the future
 * [png images](https://tools.suckless.org/dmenu/patches/png_images/)

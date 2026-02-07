@@ -11,6 +11,7 @@ inspired by [bread's build](https://github.com/BreadOnPenguins/dmenu)
 * [case-insensitive (dmenu-caseinsensitive-5.0.diff)](https://tools.suckless.org/dmenu/patches/case-insensitive/)
 * [dmenupadding (dmenu-dmenupadding-20250627-b1e217b.diff)](https://tools.suckless.org/dmenu/patches/dmenupadding/)
 * [alpha (dmenu-alpha-20251118-8b48986.diff)](https://tools.suckless.org/dmenu/patches/alpha/)
+* [vi-mode (dmenu-vi_mode-20230416-0fe460d.diff)](https://tools.suckless.org/dmenu/patches/vi-mode/)
 
 ## Patches to apply in the future
 * [png images](https://tools.suckless.org/dmenu/patches/png_images/)

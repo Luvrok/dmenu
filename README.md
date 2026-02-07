@@ -7,6 +7,7 @@ inspired by [bread's build](https://github.com/BreadOnPenguins/dmenu)
 * [border (dmenu-bordercolor-20230512-0fe460d.diff)](https://tools.suckless.org/dmenu/patches/border/)
 * [highlight (dmenu-highlight-20201211-fcdc159.diff)](https://tools.suckless.org/dmenu/patches/highlight/)
 * [no input (dmenu-noinputlinesbelowpromptfullwidth-5.2.diff)](https://tools.suckless.org/dmenu/patches/no-input/)
+* [managed (dmenu-managed-4.9.diff)](https://tools.suckless.org/dmenu/patches/managed/)
 
 ## Patches to apply in the future
 * [png images](https://tools.suckless.org/dmenu/patches/png_images/)

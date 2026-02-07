@@ -8,6 +8,7 @@ inspired by [bread's build](https://github.com/BreadOnPenguins/dmenu)
 * [highlight (dmenu-highlight-20201211-fcdc159.diff)](https://tools.suckless.org/dmenu/patches/highlight/)
 * [no input (dmenu-noinputlinesbelowpromptfullwidth-5.2.diff)](https://tools.suckless.org/dmenu/patches/no-input/)
 * [managed (dmenu-managed-4.9.diff)](https://tools.suckless.org/dmenu/patches/managed/)
+* [case-insensitive (dmenu-caseinsensitive-5.0.diff)](https://tools.suckless.org/dmenu/patches/case-insensitive/)
 
 ## Patches to apply in the future
 * [png images](https://tools.suckless.org/dmenu/patches/png_images/)

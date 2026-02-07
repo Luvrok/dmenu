@@ -12,11 +12,8 @@
 * [alpha (dmenu-alpha-20251118-8b48986.diff)](https://tools.suckless.org/dmenu/patches/alpha/)
 * [vi-mode (dmenu-vi_mode-20230416-0fe460d.diff)](https://tools.suckless.org/dmenu/patches/vi-mode/)
 * [Mouse support (dmenu-mousesupporthoverbgcol-20210123-1a13d04.diff)](https://tools.suckless.org/dmenu/patches/mouse-support/)
+* [highpriority (dmenu-highpriority-5.3.diff)](https://tools.suckless.org/dmenu/patches/highpriority/https://tools.suckless.org/dmenu/patches/highpriority/)
 
 ## Patches to apply in the future
 * [png images](https://tools.suckless.org/dmenu/patches/png_images/)
-* [grid](https://tools.suckless.org/dmenu/patches/grid/)
-* [gridnav](https://tools.suckless.org/dmenu/patches/gridnav/)
-* [no-default-select](https://tools.suckless.org/dmenu/patches/no-default-select/)
 * [Line height](https://tools.suckless.org/dmenu/patches/line-height/)
-* [highpriority](https://tools.suckless.org/dmenu/patches/highpriority/)

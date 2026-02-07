@@ -30,7 +30,7 @@
 #define OPAQUE                0xffu
 
 /* enums */
-enum { SchemeNorm, SchemeSel, SchemeOut, SchemeCursor, SchemeBorder, SchemeNormHighlight, SchemeSelHighlight, SchemeOutHighlight, SchemeLast }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeOut, SchemeCursor, SchemeBorder, SchemeLast }; /* color schemes */
 
 struct item {
 	char *text;
@@ -187,43 +187,6 @@ cistrstr(const char *h, const char *n)
 	return NULL;
 }
 
-static void
-drawhighlights(struct item *item, int x, int y, int maxw)
-{
-	char restorechar, tokens[sizeof text], *highlight,  *token;
-	int indentx, highlightlen;
-
-	drw_setscheme(drw, scheme[item == sel ? SchemeSelHighlight : item->out ? SchemeOutHighlight : SchemeNormHighlight]);
-	strcpy(tokens, text);
-	for (token = strtok(tokens, " "); token; token = strtok(NULL, " ")) {
-		highlight = fstrstr(item->text, token);
-		while (highlight) {
-			// Move item str end, calc width for highlight indent, & restore
-			highlightlen = highlight - item->text;
-			restorechar = *highlight;
-			item->text[highlightlen] = '\0';
-			indentx = TEXTW(item->text);
-			item->text[highlightlen] = restorechar;
-
-			// Move highlight str end, draw highlight, & restore
-			restorechar = highlight[strlen(token)];
-			highlight[strlen(token)] = '\0';
-			if (indentx - (lrpad / 2) - 1 < maxw)
-				drw_text(
-					drw,
-					x + indentx - (lrpad / 2) - 1,
-					y,
-					MIN(maxw - indentx, TEXTW(highlight) - lrpad),
-					bh, 0, highlight, 0
-				);
-			highlight[strlen(token)] = restorechar;
-
-			if (strlen(highlight) - strlen(token) < strlen(token)) break;
-			highlight = fstrstr(highlight + strlen(token), token);
-		}
-	}
-}
-
 static int
 drawitem(struct item *item, int x, int y, int w)
 {
@@ -234,9 +197,7 @@ drawitem(struct item *item, int x, int y, int w)
 	else
 		drw_setscheme(drw, scheme[SchemeNorm]);
 
-	int r = drw_text(drw, x, y, w, bh, lrpad / 2, item->text, 0);
-	drawhighlights(item, x, y, w);
-	return r;
+	return drw_text(drw, x, y, w, bh, lrpad / 2, item->text, 0);
 }
 
 static void
@@ -1248,14 +1209,10 @@ readxresources(void) {
 			colors[SchemeNorm][ColFg] = strdup(xval.addr);
 		else
 			colors[SchemeNorm][ColFg] = strdup(colors[SchemeNorm][ColFg]);
-		if (XrmGetResource(xdb, "normbgcolor", "*", &type, &xval)) {
+		if (XrmGetResource(xdb, "normbgcolor", "*", &type, &xval))
 			colors[SchemeNorm][ColBg] = strdup(xval.addr);
-			colors[SchemeNormHighlight][ColBg] = strdup(xval.addr);
-		}
-		else {
+		else
 			colors[SchemeNorm][ColBg] = strdup(colors[SchemeNorm][ColBg]);
-			colors[SchemeNormHighlight][ColBg] = strdup(colors[SchemeNormHighlight][ColBg]);
-		}
 		if (XrmGetResource(xdb, "selfgcolor", "*", &type, &xval))
 			colors[SchemeSel][ColFg] = strdup(xval.addr);
 		else
@@ -1264,32 +1221,14 @@ readxresources(void) {
 			colors[SchemeSel][ColBg] = strdup(xval.addr);
 		else
 			colors[SchemeSel][ColBg] = strdup(colors[SchemeSel][ColBg]);
-		if (XrmGetResource(xdb, "hlfgcolor", "*", &type, &xval)) {
-			colors[SchemeNormHighlight][ColFg] = strdup(xval.addr);
-			colors[SchemeSelHighlight][ColFg] = strdup(xval.addr);
-			colors[SchemeOutHighlight][ColFg] = strdup(xval.addr);
-		}
-		else {
-			colors[SchemeNormHighlight][ColFg] = strdup(colors[SchemeNormHighlight][ColFg]);
-			colors[SchemeSelHighlight][ColFg] = strdup(colors[SchemeSelHighlight][ColFg]);
-			colors[SchemeOutHighlight][ColFg] = strdup(colors[SchemeSelHighlight][ColFg]);
-		}
-		if (XrmGetResource(xdb, "hlbgcolor", "*", &type, &xval))
-			colors[SchemeSelHighlight][ColBg] = strdup(xval.addr);
-		else
-			colors[SchemeSelHighlight][ColBg] = strdup(colors[SchemeSelHighlight][ColBg]);
 		if (XrmGetResource(xdb, "outfgcolor", "*", &type, &xval))
 			colors[SchemeOut][ColFg] = strdup(xval.addr);
 		else
 			colors[SchemeOut][ColFg] = strdup(colors[SchemeOut][ColFg]);
-		if (XrmGetResource(xdb, "outbgcolor", "*", &type, &xval)) {
+		if (XrmGetResource(xdb, "outbgcolor", "*", &type, &xval))
 			colors[SchemeOut][ColBg] = strdup(xval.addr);
-			colors[SchemeOutHighlight][ColBg] = strdup(xval.addr);
-		}
-		else {
+		else
 			colors[SchemeOut][ColBg] = strdup(colors[SchemeOut][ColBg]);
-			colors[SchemeOutHighlight][ColBg] = strdup(colors[SchemeOut][ColBg]);
-		}
 		if (XrmGetResource(xdb, "selbordercolor", "*", &type, &xval))
 			colors[SchemeBorder][ColFg] = strdup(xval.addr);
 		else
